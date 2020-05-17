@@ -482,7 +482,8 @@ total_norms = []
 enc_norms = []
 
 #while not stop_training and epoch <= params.n_epochs: 
-while epoch <= params.n_epochs:    
+from tqdm import tqdm
+for epoch in tqdm(range(params.n_epochs)):    
 	start = time.time()
 	trainepoch(epoch)
 	print ("Train epoch " + str(epoch) + " took " + pretty_duration(time.time() - start))
@@ -525,9 +526,6 @@ while epoch <= params.n_epochs:
 	plt.savefig(current_run_dir + "/dev_ppl.png")
 	plt.close()
 	
-
-	epoch += 1
-
 print('grads norms before clipping ', total_norms)
 
 # Eval the best model
