@@ -324,7 +324,7 @@ class BLSTMEncoder(nn.Module):
 
 		# Sort by length (keep idx)
 		sent_len, idx_sort = np.sort(sent_len)[::-1], np.argsort(-sent_len)
-		sent_len = sent_len_sorted.copy()
+		sent_len = sent_len.copy()
 		idx_unsort = np.argsort(idx_sort)
 
 		idx_sort = torch.from_numpy(idx_sort.copy()).cuda()
