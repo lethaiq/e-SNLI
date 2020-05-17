@@ -103,7 +103,7 @@ def bleu_prediction(pred_file, data):
             for j in range(1, 3):
                 current_refs.append(data['expl_' + str(j)][k].strip().split())
             if k % 5000 == 0:
-                print 'refs: ', current_refs
+                print ('refs: ', current_refs)
             references.append(current_refs)
             if k == 3:
                 print("candidates ", candidates)
