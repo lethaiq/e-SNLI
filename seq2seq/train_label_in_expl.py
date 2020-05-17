@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 import time
@@ -8,7 +9,6 @@ import csv
 import numpy as np
 import random
 from shutil import copy2
-from __future__ import print_function
 import torch
 from torch.autograd import Variable
 import torch.nn as nn
