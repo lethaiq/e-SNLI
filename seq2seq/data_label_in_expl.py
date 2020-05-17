@@ -5,7 +5,7 @@ import torch
 import shutil
 import sys
 #sys.path.append("..")
-sys.path.append("../mutils")
+sys.path.append("../utils/")
 
 from mutils import makedirs
 
