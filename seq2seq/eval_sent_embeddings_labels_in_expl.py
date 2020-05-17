@@ -11,9 +11,9 @@ from data_label_in_expl import get_dev_test_original_expl, get_batch, build_voca
 
 import sys
 #sys.path.append("..")
-sys.path.append("/raid/data/oanuru/infer_sent_esnli/utils")
+sys.path.append("../utils")
 from mutils import get_sentence_from_indices, get_key_from_val, remove_file, assert_sizes, bleu_prediction
-sys.path.append("/raid/data/oanuru/infer_sent_esnli")
+sys.path.append("../")
 import senteval
 
 PATH_TO_DATA = '../data/senteval_data/'
