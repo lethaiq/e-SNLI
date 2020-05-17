@@ -341,7 +341,7 @@ class BLSTMEncoder(nn.Module):
 		sent_output = nn.utils.rnn.pad_packed_sequence(sent_output, False, 0)[0]
 
 		# Un-sort by length
-		idx_unsort = torch.from_numpy(idx_unsort.cuda()).cuda()
+		idx_unsort = torch.from_numpy(idx_unsort).cuda()
 		sent_output = sent_output.index_select(1, Variable(idx_unsort))
 		sent_output_padding = sent_output_padding.index_select(1, Variable(idx_unsort))
 		
