@@ -127,7 +127,7 @@ makedirs(params.results_dir)
 params.save_title += "_dec" + str(params.decoder_type.upper()) + "_" + params.optimizer + "_Enc" + str(params.enc_rnn_dim) + "_Dec" + str(params.dec_rnn_dim) + "_bs" + str(params.batch_size) + "_a" + str(params.alpha) + "_gpu" + str(params.gpu)
 
 if not params.nonlinear_fc:
-	print '\n\n\n WARNING: Classifier is linear only \n\n\n'
+	print('\n\n\n WARNING: Classifier is linear only \n\n\n')
 	params.save_title += "___LINEAR_CLASSIF___"
 
 if params.fc_dim != 512:
