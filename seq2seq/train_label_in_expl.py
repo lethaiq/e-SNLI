@@ -26,7 +26,7 @@ sys.path.append("..")
 from utils.mutils import get_optimizer, makedirs, pretty_duration, get_sentence_from_indices, get_key_from_val, n_parameters, remove_file, assert_sizes, permute
 
 
-GLOVE_PATH = '../dataset/gloVe/glove.6B.300d.txt'
+GLOVE_PATH = '../dataset/glove/glove.6B.300d.txt'
 
 
 parser = argparse.ArgumentParser(description='NLI training')
