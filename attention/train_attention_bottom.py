@@ -294,7 +294,7 @@ def trainepoch(epoch):
 		input_expl_batch = input_expl_batch[:-1] 
 
 		# make them variables and set them on cuda
-		s1_batch, s2_batch, input_expl_batch = s1_batch.cuda(), Variable(s2_batch.cuda()), Variable(input_expl_batch.cuda())
+		s1_batch, s2_batch, input_expl_batch = Variable(s1_batch.cuda()), Variable(s2_batch.cuda()), Variable(input_expl_batch.cuda())
 
 		# taget expl is a translation of one timestep
 		tgt_expl_batch, lens_tgt_expl = get_target_expl_batch(expl_1[stidx:stidx + params.batch_size], word_index)
