@@ -158,15 +158,15 @@ if not params.cudnn_deterministic:
 
 
 current_run_dir = params.results_dir + "/" + time.strftime("%d:%m") + "_" + time.strftime("%H:%M:%S") + params.save_title
-params.current_run_dir = current_run_dir
-makedirs(current_run_dir)
-copy2('models_attention_bottom_separate.py', current_run_dir)
-copy2('train_attention_bottom.py', current_run_dir)
-copy2('data_attention_bottom.py', current_run_dir)
-copy2('eval_attention.py', current_run_dir)
-makedirs(os.path.join(params.directory_expl_to_labels, "models_expl_to_labels.py"))
-copy2(os.path.join(params.directory_expl_to_labels, "models_expl_to_labels.py"), '.')
-from models_expl_to_labels import ExplToLabelsNet
+# params.current_run_dir = current_run_dir
+# makedirs(current_run_dir)
+# copy2('models_attention_bottom_separate.py', current_run_dir)
+# copy2('train_attention_bottom.py', current_run_dir)
+# copy2('data_attention_bottom.py', current_run_dir)
+# copy2('eval_attention.py', current_run_dir)
+# makedirs(os.path.join(params.directory_expl_to_labels, "models_expl_to_labels.py"))
+# copy2(os.path.join(params.directory_expl_to_labels, "models_expl_to_labels.py"), '.')
+# from models_expl_to_labels import ExplToLabelsNet
 copy2("models_expl_to_labels.py", current_run_dir)
 
 streamtologger.redirect(target=current_run_dir + '/log.txt')
