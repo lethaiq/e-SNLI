@@ -82,16 +82,24 @@ def get_word_dict(sentences):
     return word_index
 
 
-def get_glove(word_dict, glove_path):
-    # create word_vec with glove vectors
+def get_glove_k(self, glove_path, K):
+    assert hasattr(self, 'glove_path'), 'warning : you need \
+                                         to set_glove_path(glove_path)'
+    # create word_vec with k first glove vectors
+    k = 0
     word_vec = {}
     with open(glove_path) as f:
         for line in f:
             word, vec = line.split(' ', 1)
-            if word in word_dict:
-                word_vec[word] = np.array(list(map(float, vec.split())))
+            if k <= K:
+                word_vec[word] = np.fromstring(vec, sep=' ')
+                k += 1
+            if k > K:
+                if word in ['<s>', '</s>']:
+                    word_vec[word] = np.fromstring(vec, sep=' ')
 
-    print('Found {0}(/{1}) words with glove vectors'.format(len(word_vec), len(word_dict)))
+            if k > K and all([w in word_vec for w in ['<s>', '</s>']]):
+                break
     return word_vec
 
 

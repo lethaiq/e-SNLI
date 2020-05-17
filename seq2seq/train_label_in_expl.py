@@ -346,7 +346,6 @@ def trainepoch(epoch):
 
 	for stidx in range(0, len(s1), params.batch_size):
 		# prepare batch
-		print(word_vec['<s>'])
 		s1_batch, s1_len = get_batch(s1[stidx:stidx + params.batch_size], word_vec)
 		s2_batch, s2_len = get_batch(s2[stidx:stidx + params.batch_size], word_vec)
 		input_expl_batch, _ = get_batch(expl_1[stidx:stidx + params.batch_size], word_vec)
