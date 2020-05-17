@@ -227,6 +227,7 @@ preproc = params.preproc_expl + "_"
 train = get_train(params.esnli_path, preproc, params.min_freq, params.n_train)
 
 snli_dev = get_dev_test_with_expl(params.esnli_path, 'dev', preproc, params.min_freq)
+snli_test = get_dev_test_with_expl(params.esnli_path, 'test', preproc, params.min_freq)
 
 all_sentences = train['s1'] + train['s2'] + train['expl_1'] + snli_dev['s1'] + snli_dev['s2'] + snli_dev['expl_1'] + snli_dev['expl_2'] + snli_dev['expl_3']
 word_vec = build_vocab(all_sentences, GLOVE_PATH)
