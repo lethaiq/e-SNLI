@@ -5,7 +5,7 @@ import torch
 import shutil
 import sys
 #sys.path.append("..")
-sys.path.append("/raid/data/oanuru/infer_sent_esnli/utils")
+sys.path.append("../mutils")
 
 from mutils import makedirs
 
