@@ -32,7 +32,7 @@ GLOVE_PATH = '../dataset/GloVe/glove.840B.300d.txt'
 parser = argparse.ArgumentParser(description='NLI training')
 # paths
 parser.add_argument("--train_set", type=str, default='eSNLI', help="eSNLI or ALLeNLI")
-parser.add_argument("--esnli_path", type=str, default='../dataset/eSNLI/old_dataset_format/', help="eSNLI data path")
+parser.add_argument("--esnli_path", type=str, default='../dataset/eSNLI/', help="eSNLI data path")
 parser.add_argument("--n_train", type=int, default=-1)
 parser.add_argument("--save_title", type=str, default='')
 parser.add_argument("--results_dir", type=str, default='results_label_in_expl')
