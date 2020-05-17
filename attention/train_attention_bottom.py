@@ -319,9 +319,9 @@ def trainepoch(epoch):
 
 		# loss expl; out_expl is T x bs x vocab_sizes, tgt_expl_batch is T x bs
 		loss_expl = criterion_expl(out_expl.view(out_expl.size(0) * out_expl.size(1), -1), tgt_expl_batch.view(tgt_expl_batch.size(0) * tgt_expl_batch.size(1)))
-		expl_costs.append(loss_expl.data[0])
+		expl_costs.append(loss_expl.item())
 		cum_n_words += lens_tgt_expl.sum()
-		cum_ppl += loss_expl.data[0]
+		cum_ppl += loss_expl.item()
 
 		# backward
 		optimizer.zero_grad()
@@ -415,7 +415,7 @@ def evaluate_dev(epoch):
 			# ppl
 			loss_expl = criterion_expl(out_expl.view(out_expl.size(0) * out_expl.size(1), -1), tgt_expl_batch.view(tgt_expl_batch.size(0) * tgt_expl_batch.size(1)))
 			cum_dev_n_words += lens_tgt_expl.sum()
-			cum_dev_ppl += loss_expl.data[0]
+			cum_dev_ppl += loss_expl.item()
 			answer_idx = torch.max(out_expl, 2)[1]
 			if i % params.print_every == 0:
 				print("Decoded explanation " + str(index) + " :  ", get_sentence_from_indices(word_index, answer_idx[:, 0]))
