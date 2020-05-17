@@ -20,7 +20,7 @@ def get_batch(batch, word_vec):
         for j in range(min(len(batch[i]), max_len)):
             embed[j, i, :] = word_vec[batch[i][j]]
 
-    return torch.from_numpy(embed).float().copy(), lengths
+    return torch.from_numpy(embed.copy()).float(), lengths
 
 
 # Doesn't include <s> because we don't output this
