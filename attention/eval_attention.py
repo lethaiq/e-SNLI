@@ -161,7 +161,7 @@ def evaluate_snli_final(esnli_net, expl_to_labels_net, criterion_expl, dataset, 
 		bleu_score = bleu_prediction(expl_csv, snli_test_no_unk)
 
 	bleu_score = 100 * bleu_score
-	print dataset.upper() + ' SNLI accuracy: ', eval_acc, 'bleu score: ', bleu_score, 'ppl: ', eval_ppl
+	print(dataset.upper() + ' SNLI accuracy: ', eval_acc, 'bleu score: ', bleu_score, 'ppl: ', eval_ppl)
 	return eval_acc, round(bleu_score, 2), round(eval_ppl, 2)
 
 
