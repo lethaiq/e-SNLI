@@ -252,7 +252,8 @@ for split in ['s1', 's2', 'expl_1']:
 
 for split in ['s1', 's2', 'expl_1', 'expl_2', 'expl_3']:
 	snli_dev[split] = np.array([['<s>'] + [word for word in sent.split() if word in word_vec] + ['</s>'] for sent in snli_dev[split]])
-
+	snli_test[split] = np.array([['<s>'] + [word for word in sent.split() if word in word_vec] + ['</s>'] for sent in snli_test[split]])
+	
 
 """
 CREATE MODEL
