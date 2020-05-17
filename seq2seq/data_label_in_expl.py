@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import numpy as np
 import torch
@@ -26,7 +27,7 @@ def get_dev_test_original_expl(data_path, data_type):
     expl_3['sent'] = [line.rstrip() for line in open(expl_3['path'], 'r')]                         
 
     assert len(expl_1['sent']) == len(expl_2['sent']) == len(expl_3['sent'])
-    print data_path, data_type, len(expl_1['sent'])
+    print(data_path, data_type, len(expl_1['sent']))
    
     data = {'expl_1': expl_1['sent'], 'expl_2': expl_2['sent'], 'expl_3': expl_3['sent']}
 
@@ -100,7 +101,7 @@ def words_in_glove(words, glove_path):
         for line in f:
             w, vec = line.split(' ', 1)
             if w in words:
-                print w + ' is in glove'
+                print(w + ' is in glove')
 
 
 
