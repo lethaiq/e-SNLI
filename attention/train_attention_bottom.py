@@ -166,10 +166,10 @@ current_run_dir = params.results_dir + "/" + time.strftime("%d:%m") + "_" + time
 # copy2('eval_attention.py', current_run_dir)
 # makedirs(os.path.join(params.directory_expl_to_labels, "models_expl_to_labels.py"))
 # copy2(os.path.join(params.directory_expl_to_labels, "models_expl_to_labels.py"), '.')
-# from models_expl_to_labels import ExplToLabelsNet
+from models_expl_to_labels import ExplToLabelsNet
 copy2("models_expl_to_labels.py", current_run_dir)
 
-streamtologger.redirect(target=current_run_dir + '/log.txt')
+# streamtologger.redirect(target=current_run_dir + '/log.txt')
 
 # set gpu device
 torch.cuda.set_device(params.gpu_id)
