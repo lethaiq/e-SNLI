@@ -3,7 +3,7 @@ import numpy as np
 import torch
 import shutil
 import sys
-sys.path.append("..")
+sys.path.append("../utils")
 from mutils import makedirs
 
 NLI_DIC_LABELS = {'entailment': 2,  'neutral': 1, 'contradiction': 0}
