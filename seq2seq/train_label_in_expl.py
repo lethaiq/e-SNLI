@@ -253,7 +253,7 @@ for split in ['s1', 's2', 'expl_1']:
 for split in ['s1', 's2', 'expl_1', 'expl_2', 'expl_3']:
 	snli_dev[split] = np.array([['<s>'] + [word for word in sent.split() if word in word_vec] + ['</s>'] for sent in snli_dev[split]])
 	snli_test[split] = np.array([['<s>'] + [word for word in sent.split() if word in word_vec] + ['</s>'] for sent in snli_test[split]])
-	
+
 
 """
 CREATE MODEL
@@ -346,6 +346,7 @@ def trainepoch(epoch):
 
 	for stidx in range(0, len(s1), params.batch_size):
 		# prepare batch
+		print(word_vec['<s>'])
 		s1_batch, s1_len = get_batch(s1[stidx:stidx + params.batch_size], word_vec)
 		s2_batch, s2_len = get_batch(s2[stidx:stidx + params.batch_size], word_vec)
 		input_expl_batch, _ = get_batch(expl_1[stidx:stidx + params.batch_size], word_vec)
