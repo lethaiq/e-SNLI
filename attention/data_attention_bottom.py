@@ -65,6 +65,9 @@ def get_glove(word_dict, glove_path):
             if word in word_dict:
                 word_vec[word] = np.array(list(map(float, vec.split())))
 
+    for word in ['<p>','<s>','</s>','<UNK>']:
+        word_vec[word] = np.random.rand(300)
+
     print('Found {0}(/{1}) words with glove vectors'.format(len(word_vec), len(word_dict)))
     return word_vec
 
