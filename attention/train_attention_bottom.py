@@ -306,7 +306,7 @@ def trainepoch(epoch):
 
 		# print example
 		if stidx % params.print_every == 0:
-			print current_run_dir, '\n'
+			print(current_run_dir, '\n')
 			print('epoch: ', epoch)
 			print("Sentence1:  ", ' '.join(s1[stidx]), " LENGTH: ", s1_len[0])
 			print("Sentence2:  ", ' '.join(s2[stidx]), " LENGTH: ", s2_len[0])
