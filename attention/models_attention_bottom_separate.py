@@ -328,6 +328,7 @@ class BLSTMEncoder(nn.Module):
 
 		idx_sort = torch.from_numpy(idx_sort).cuda() if self.is_cuda() \
 			else torch.from_numpy(idx_sort)
+		idx_sort = idx_sort.cuda()
 		sent = sent.index_select(1, Variable(idx_sort))
 
 		# Handling padding in Recurrent Networks
