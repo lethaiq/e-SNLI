@@ -8,7 +8,7 @@ import csv
 import numpy as np
 import random
 from shutil import copy2
-
+from __future__ import print_function
 import torch
 from torch.autograd import Variable
 import torch.nn as nn
@@ -237,7 +237,7 @@ expl_sentences = train['expl_1'] + snli_dev['expl_1'] + snli_dev['expl_2'] + snl
 word_index = get_word_dict(expl_sentences)
 params.word_index = word_index
 
-print "difference ", set(word_index.keys()) - set(word_index_train.keys())
+print("difference ", set(word_index.keys()) - set(word_index_train.keys()))
 if params.n_train == -1:
 	# there may be some words that appear in premise and hypothesis of train as well as in expl of dev or test but not in explanation of train. There was only one as far as i looked but if there are too many we should maybe take care of this.
 	assert len(word_index) - len(word_index_train) < 5, "n words in train " + str(len(word_index_train)) + " while n words in total " + str(len(word_index))
@@ -320,7 +320,7 @@ def trainepoch(epoch):
 
 	if (epoch > 1) and (params.annealing_alpha) and (params.alpha + params.annealing_rate <= params.annealing_max):
 		params.alpha += params.annealing_rate
-		print "alpha: ", str(params.alpha)
+		print("alpha: ", str(params.alpha))
 	
 	label_costs = []
 	expl_costs = []
@@ -370,15 +370,15 @@ def trainepoch(epoch):
 
 		# print example
 		if stidx % params.print_every == 0:
-			print current_run_dir, '\n'
-			print 'epoch: ', epoch
-			print "Sentence1:  ", ' '.join(s1[stidx]), " LENGTH: ", s1_len[0]
-			print "Sentence2:  ", ' '.join(s2[stidx]), " LENGTH: ", s2_len[0]
-			print "Gold label:  ", get_key_from_val(label[stidx], NLI_DIC_LABELS)
-			print "Predicted label:  ", get_key_from_val(pred[0], NLI_DIC_LABELS)
-			print "Explanation:  ", ' '.join(expl_1[stidx])
-			print "Target expl:  ", get_sentence_from_indices(word_index, tgt_expl_batch[:, 0]), " LENGTH: ", lens_tgt_expl[0]
-			print "Decoded explanation:  ", get_sentence_from_indices(word_index, answer_idx[:, 0]), "\n\n\n"
+			print(current_run_dir, '\n')
+			print('epoch: ', epoch)
+			print("Sentence1:  ", ' '.join(s1[stidx]), " LENGTH: ", s1_len[0])
+			print("Sentence2:  ", ' '.join(s2[stidx]), " LENGTH: ", s2_len[0])
+			print("Gold label:  ", get_key_from_val(label[stidx], NLI_DIC_LABELS))
+			print("Predicted label:  ", get_key_from_val(pred[0], NLI_DIC_LABELS))
+			print("Explanation:  ", ' '.join(expl_1[stidx]))
+			print("Target expl:  ", get_sentence_from_indices(word_index, tgt_expl_batch[:, 0]), " LENGTH: ", lens_tgt_expl[0])
+			print("Decoded explanation:  ", get_sentence_from_indices(word_index, answer_idx[:, 0]), "\n\n\n")
 			
 
 		# loss labels
@@ -432,7 +432,7 @@ def trainepoch(epoch):
 			train_expl_costs.append(params.lmbda * (1 - params.alpha) * np.mean(expl_costs))
 			train_label_costs.append(params.lmbda * params.alpha * np.mean(label_costs))
 			train_ppl.append(math.exp(cum_ppl/cum_n_words))
-			print '{0} ; epoch: {1}, total loss : {2} ; lmbda * alpha * (lbl loss) : {3}; lmbda * (1-alpha) * (expl loss) : {4} ; train ppl : {5}; accuracy train esnli : {6}'.format(stidx, epoch, round(train_all_losses[-1], 2), round(train_label_costs[-1], 2), round(train_expl_costs[-1], 2), round(train_ppl[-1], 2), round(100.*correct/(stidx+s1_batch.size(1)), 2))
+			print('{0} ; epoch: {1}, total loss : {2} ; lmbda * alpha * (lbl loss) : {3}; lmbda * (1-alpha) * (expl loss) : {4} ; train ppl : {5}; accuracy train esnli : {6}'.format(stidx, epoch, round(train_all_losses[-1], 2), round(train_label_costs[-1], 2), round(train_expl_costs[-1], 2), round(train_ppl[-1], 2), round(100.*correct/(stidx+s1_batch.size(1)), 2)))
 			label_costs = []
 			expl_costs = []
 			all_losses = []
